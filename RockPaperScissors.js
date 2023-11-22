@@ -8,7 +8,9 @@ let computerSelection = getComputerChoice(choices);
 
 let playerSelection = getPlayerChoice(choices);
 
-playRound(computerSelection, playerSelection);
+let result = playRound(computerSelection, playerSelection);
+
+console.log(result);
 
 
 function getComputerChoice(choices) {
@@ -25,17 +27,15 @@ function getPlayerChoice(choices){
 }
 
 function playRound(computerSelection, playerSelection){
-    console.log("Computer choice: " + computerSelection);
-    console.log("Player choice: " + playerSelection);
 
     if(playerSelection === computerSelection)
-            console.log("Result is a draw");
+            return "Draw! No Winner";
     else if(playerSelection === "Rock" && computerSelection === "Scissors")
-            console.log("player Wins");
+            return ("You Win! " + playerSelection + " beats " + computerSelection);
     else if(playerSelection === "Paper" && computerSelection === "Rock")
-            console.log("Player Wins");
+            return ("You Win! " + playerSelection + " beats " + computerSelection);
     else if(playerSelection === "Scissors" && computerSelection === "Paper")
-            console.log("Player Wins");
+            return ("You Win! " + playerSelection + " beats " + computerSelection);
     else
-        console.log("Computer Wins");
+        return ("You Lose! " + computerSelection + " beats " + playerSelection);
 }
