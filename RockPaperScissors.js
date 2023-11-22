@@ -1,22 +1,37 @@
 // Rock Paper Scissors
 
-console.log("Hello World!")
+console.log("Hello World!");
 
 const choices = ["Rock", "Paper", "Scissors"];
+let win = 0, lose = 0, draw = 0;
 
-let computerSelection = getComputerChoice(choices);
+let rounds = prompt("How many rounds would you like to play?");
 
-let playerSelection = getPlayerChoice(choices);
+for(let i = 0; i < rounds; i++)
+{
+    game();
+}
 
-let result = playRound(computerSelection, playerSelection);
+console.log("Wins: " + win);
+console.log("Loses: " + lose);
+console.log("Draw: " + draw);
 
-console.log(result);
 
+function game(){
+    let computerSelection = getComputerChoice(choices);
+
+    let playerSelection = getPlayerChoice(choices);
+
+    let result = playRound(computerSelection, playerSelection);
+
+    console.log(result);
+
+}
 
 function getComputerChoice(choices) {
     let randomSelection = Math.floor((Math.random() * choices.length));
     let computerChoice = choices[randomSelection];
-    return computerChoice
+    return computerChoice;
 }
 
 function getPlayerChoice(choices){
@@ -28,14 +43,25 @@ function getPlayerChoice(choices){
 
 function playRound(computerSelection, playerSelection){
 
-    if(playerSelection === computerSelection)
+    if(playerSelection === computerSelection){
+            draw++;
             return "Draw! No Winner";
-    else if(playerSelection === "Rock" && computerSelection === "Scissors")
+    }
+    else if(playerSelection === "Rock" && computerSelection === "Scissors"){
+            win++;
             return ("You Win! " + playerSelection + " beats " + computerSelection);
-    else if(playerSelection === "Paper" && computerSelection === "Rock")
+    }
+    else if(playerSelection === "Paper" && computerSelection === "Rock"){
+            win++;
             return ("You Win! " + playerSelection + " beats " + computerSelection);
-    else if(playerSelection === "Scissors" && computerSelection === "Paper")
+    }
+    else if(playerSelection === "Scissors" && computerSelection === "Paper"){
+            win++;
             return ("You Win! " + playerSelection + " beats " + computerSelection);
-    else
+    }
+    else{
+        lose++;
         return ("You Lose! " + computerSelection + " beats " + playerSelection);
+    }
 }
+
